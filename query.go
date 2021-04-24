@@ -38,10 +38,10 @@ func Query(ctx context.Context, db *sql.DB, tx *sql.Tx, sqlText string, args ...
 
 	defer rows.Close()
 
-	// NOTE(rbastic): I've tried many different versions of the code below
-	// over the past 2-3 years, so far, this looks like the cleanest.
+	// NOTE(rbastic): I've tried many different versions of the code below,
+	// so far, this looks like the cleanest.
 	//
-	// https://kylewbanks.com/blog/query-result-to-map-in-golang
+	// See: https://kylewbanks.com/blog/query-result-to-map-in-golang
 
 	cols, err := rows.Columns()
 	if err != nil {
@@ -75,5 +75,5 @@ func Query(ctx context.Context, db *sql.DB, tx *sql.Tx, sqlText string, args ...
 
 	err = rows.Err()
 
-	return results, nil
+	return results, err
 }
